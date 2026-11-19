@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thor Info | PCs gamers montados para vencer</title>
+<meta name="description" content="Thor Info: computadores gamers montados, testados por 72 horas e entregues prontos para jogar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0c100b; --bg2:#131a11; --line:#26301f;
+  --moss:#a7bb72; --moss-d:#6f8446; --sand:#ece9d6; --txt:#c9cfb8;
+  --amber:#f2a93b; --h:95;
+  --display:'Chakra Petch',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:400 1.05rem/1.65 var(--body);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);color:var(--sand);line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);max-width:18ch}
+.wrap{width:min(1160px,92%);margin:auto}
+section{padding:clamp(4rem,9vw,7rem) 0}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--moss),var(--amber));z-index:60}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:50;backdrop-filter:blur(14px);background:rgba(12,16,11,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.7rem;font:700 1.4rem var(--display);color:var(--sand)}
+.brand svg{width:38px;height:38px;fill:var(--moss);transition:transform .4s}
+.brand:hover svg{transform:rotate(-8deg) scale(1.1)}
+.brand b{color:var(--moss)}
+.links{display:flex;gap:2rem;font-weight:500}
+.links a{position:relative;padding:.3rem 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--amber);transition:width .3s}
+.links a:hover::after{width:100%}
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:10px;font:600 1rem var(--display);border:2px solid var(--moss);background:var(--moss);color:#12180d;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px -8px var(--moss)}
+.btn.ghost{background:transparent;color:var(--moss)}
+.btn.ghost:hover{background:rgba(167,187,114,.12)}
+@media(max-width:760px){.links{display:none}}
+
+/* HERO */
+.hero{min-height:100svh;display:grid;align-items:center;padding-top:110px;position:relative;
+  background:radial-gradient(60% 55% at 72% 50%,hsl(var(--h) 55% 22% /.55),transparent 70%),var(--bg);transition:background .6s}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:2rem;align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.2vw,4.9rem);margin-bottom:1.3rem}
+.hero p{max-width:46ch;margin-bottom:2rem;font-size:1.15rem}
+.cta{display:flex;gap:1rem;flex-wrap:wrap}
+.stage{display:grid;place-items:center;perspective:1000px;min-height:480px;position:relative}
+.stage .pc{transform:scale(1.55) rotateY(var(--ry,-18deg)) rotateX(var(--rx,4deg));transition:transform .15s ease-out}
+.ctrl{position:absolute;bottom:0;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.ctrl span{font-size:.9rem;margin-right:.3rem}
+.dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--sand);background:hsl(var(--c) 85% 55%);cursor:pointer;transition:transform .2s}
+.dot:hover{transform:scale(1.2)}
+.oc{padding:.45rem 1rem;border-radius:99px;border:2px solid var(--amber);background:transparent;color:var(--amber);font:600 .9rem var(--display);cursor:pointer}
+.oc[aria-pressed=true]{background:var(--amber);color:#1a1205}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.stage{min-height:520px}}
+
+/* PC EM CSS */
+.pc{--h:95;position:relative;width:200px;height:260px;border-radius:14px;transform-style:preserve-3d;
+  background:linear-gradient(160deg,#1d261a,#090c08);border:2px solid #2c3827;
+  box-shadow:0 0 0 1px #000,0 30px 60px -20px hsl(var(--h) 90% 50% /.55),inset 0 0 30px #000}
+.pc::before{content:"";position:absolute;inset:10px;border-radius:8px;background:linear-gradient(120deg,rgba(255,255,255,.07),transparent 40%),#0a0d09;border:1px solid #232d1f}
+.pc::after{content:"";position:absolute;left:-2px;right:-2px;bottom:-2px;height:7px;border-radius:0 0 12px 12px;background:hsl(var(--h) 90% 58%);box-shadow:0 0 18px hsl(var(--h) 90% 58%)}
+.pc i{position:absolute;display:block}
+.fan{width:58px;height:58px;left:22px;border-radius:50%;border:3px solid hsl(var(--h) 90% 60%);
+  background:repeating-conic-gradient(hsl(var(--h) 85% 55% /.85) 0 18deg,transparent 18deg 60deg);
+  box-shadow:0 0 14px hsl(var(--h) 90% 55%),inset 0 0 10px hsl(var(--h) 90% 55% /.6);animation:spin var(--sp,2.4s) linear infinite}
+.fan::after{content:"";position:absolute;inset:40%;border-radius:50%;background:#0a0d09}
+.f1{top:24px}.f2{top:96px}.f3{top:168px}
+.cool{width:46px;height:46px;right:20px;top:24px;border-radius:50%;background:radial-gradient(circle,#0a0d09 34%,hsl(var(--h) 80% 50%) 36% 44%,#1c2419 46%);box-shadow:0 0 14px hsl(var(--h) 90% 50% /.7);animation:pulse 2.4s ease-in-out infinite}
+.ram{width:7px;height:56px;right:30px;top:82px;border-radius:2px;background:linear-gradient(hsl(var(--h) 90% 60%),#222);box-shadow:14px 0 0 hsl(var(--h) 90% 60%),28px 0 0 hsl(var(--h) 90% 60%),0 0 10px hsl(var(--h) 90% 60%);animation:pulse 1.8s ease-in-out infinite}
+.gpu{width:84px;height:34px;right:20px;top:164px;border-radius:5px;background:linear-gradient(90deg,#1b2418,#2a3524);border-bottom:3px solid hsl(var(--h) 90% 60%);box-shadow:0 6px 14px -4px hsl(var(--h) 90% 55%)}
+.gpu::before,.gpu::after{content:"";position:absolute;top:5px;width:18px;height:18px;border-radius:50%;border:2px solid hsl(var(--h) 90% 60%);background:repeating-conic-gradient(hsl(var(--h) 90% 60%) 0 25deg,transparent 25deg 90deg);animation:spin var(--sp,2.4s) linear infinite}
+.gpu::before{left:14px}.gpu::after{right:14px}
+.fast{--sp:.35s}
+.hero .pc.fast{animation:shake .12s infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.45}}
+@keyframes shake{25%{translate:1px -1px}75%{translate:-1px 1px}}
+
+/* FAIXA */
+.strip{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:1rem 0;white-space:nowrap}
+.strip div{display:inline-block;animation:roll 28s linear infinite;font:600 1.15rem var(--display);color:var(--moss)}
+.strip span{margin:0 2.2rem}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* PRODUTOS */
+.sub{max-width:52ch;margin:1rem 0 3.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem}
+.card{background:linear-gradient(180deg,var(--bg2),#0e130c);border:1px solid var(--line);border-radius:18px;padding:2rem 1.6rem 1.8rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:border-color .3s,transform .3s}
+.card:hover{border-color:hsl(var(--h) 60% 50%);transform:translateY(-6px)}
+.card .pc{margin:1rem 0 2.2rem;transition:transform .5s}
+.card:hover .pc{transform:rotateY(-22deg) scale(1.06)}
+.card h3{font-size:1.6rem;margin-bottom:.3rem}
+.card ul{list-style:none;margin:1rem 0 1.4rem;font-size:.97rem}
+.card li{padding:.3rem 0;border-bottom:1px dashed var(--line)}
+.price{font:700 2rem var(--display);color:var(--sand)}
+.price small{display:block;font:400 .9rem var(--body);color:var(--txt)}
+.card .btn{margin-top:1.2rem;width:100%}
+.tag{position:absolute;margin-top:-.4rem;padding:.2rem .8rem;border-radius:99px;background:var(--amber);color:#1a1205;font:600 .85rem var(--display)}
+
+/* DIFERENCIAIS */
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.4rem 2rem;margin-top:3rem}
+.feat h3{font-size:1.25rem;margin:.9rem 0 .4rem}
+.ico{width:52px;height:52px;border-radius:14px;border:2px solid var(--moss);display:grid;place-items:center;color:var(--moss);font:700 1.5rem var(--display)}
+.nums{display:flex;gap:3rem;flex-wrap:wrap;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.nums b{display:block;font:700 clamp(2.2rem,5vw,3.4rem) var(--display);color:var(--moss)}
+
+/* CTA */
+.final{text-align:center}
+.final h2{margin:0 auto 1.2rem;max-width:20ch}
+.final p{max-width:50ch;margin:0 auto 2rem}
+.final .logo{width:110px;fill:var(--moss);margin-bottom:1.4rem;filter:drop-shadow(0 0 24px rgba(167,187,114,.4))}
+footer{border-top:1px solid var(--line);padding:2rem 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* REVEAL NA ROLAGEM */
+.rv{opacity:0;transform:translateY(60px) scale(.94);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ===== REVISÃO: correções e realismo ===== */
+.card{position:relative;perspective:900px}
+.card.rv.in:hover{transform:translateY(-6px)}
+.tag{top:1rem;right:1rem;margin:0;z-index:2}
+.stage{min-height:540px}
+.pc{height:280px}
+.pc::before{background:linear-gradient(120deg,rgba(255,255,255,.08),transparent 38%),repeating-linear-gradient(90deg,transparent 0 11px,rgba(167,187,114,.05) 11px 12px),repeating-linear-gradient(0deg,transparent 0 11px,rgba(167,187,114,.05) 11px 12px),#0a0d09}
+.ram{right:44px}
+.psu{left:12px;right:12px;bottom:12px;height:32px;border-radius:0 0 6px 6px;background:linear-gradient(#1a2217,#0d110c);border-top:2px solid #2c3827}
+.psu::before{content:"";position:absolute;left:12px;top:11px;width:8px;height:8px;border-radius:50%;background:hsl(var(--h) 90% 60%);box-shadow:0 0 8px hsl(var(--h) 90% 60%)}
+.psu::after{content:"";position:absolute;right:12px;top:8px;width:60px;height:14px;background:repeating-linear-gradient(90deg,#2c3827 0 2px,transparent 2px 6px)}
+.card details{width:100%;text-align:left;margin:-.4rem 0 1rem}
+.card summary{cursor:pointer;color:var(--moss);font-weight:600}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;font-size:.9rem;margin-top:.8rem}
+.card dt{color:var(--sand);font-weight:600}
+/* ===== CARRINHO E CHECKOUT ===== */
+.cartbtn{display:inline-flex;gap:.6rem;align-items:center}
+.cartbtn b{background:#12180d;color:var(--moss);border-radius:99px;min-width:1.6rem;padding:0 .45rem;text-align:center;font-size:.9rem}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70;opacity:0;pointer-events:none;transition:opacity .3s}
+.ov.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--bg2);border-left:1px solid var(--line);z-index:80;transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.2,.7,.2,1),visibility 0s .4s;display:flex;flex-direction:column}
+.drawer.on{transform:none;visibility:visible;transition-delay:0s}
+.mhead{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.4rem;border-bottom:1px solid var(--line)}
+.x{background:none;border:0;color:var(--sand);font-size:2rem;line-height:1;cursor:pointer}
+#items{flex:1;overflow:auto;padding:.6rem 1.4rem}
+.it{display:flex;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line)}
+.it .sw{width:12px;height:48px;border-radius:6px;background:hsl(var(--h) 85% 55%);box-shadow:0 0 12px hsl(var(--h) 85% 55%)}
+.it div{flex:1}.it small{display:block}
+.qty{display:flex;gap:.5rem;align-items:center;margin-top:.4rem}
+.qty button,.lnk{background:none;border:1px solid var(--line);color:var(--sand);border-radius:6px;min-width:30px;height:30px;cursor:pointer;font:inherit}
+.lnk{border:0;color:var(--moss);text-decoration:underline;padding:0 .4rem}
+.dfoot{padding:1.2rem 1.4rem;border-top:1px solid var(--line)}
+.dfoot p{display:flex;justify-content:space-between;margin-bottom:1rem;font:700 1.2rem var(--display);color:var(--sand)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.dfoot .btn,.mbody .btn{width:100%}
+.modal{position:fixed;inset:0;z-index:90;background:rgba(6,8,5,.94);overflow:auto;padding:1.5rem 1rem}
+.modal[hidden]{display:none}
+.mbox{width:min(980px,100%);margin:auto;background:var(--bg2);border:1px solid var(--line);border-radius:18px}
+.steps{display:flex;gap:1.6rem;padding:1rem 1.4rem 0;font:600 1rem var(--display)}
+.steps span{opacity:.5;padding-bottom:.5rem}
+.steps [aria-current]{opacity:1;color:var(--moss);border-bottom:2px solid var(--amber)}
+.mbody{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;padding:1.6rem}
+@media(max-width:820px){.mbody{grid-template-columns:1fr}.frm{grid-template-columns:1fr!important}}
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fl{display:flex;flex-direction:column;gap:.35rem;font-weight:500;font-size:.95rem}
+.fl.w{grid-column:1/-1}
+.fl input,.fl select{background:var(--bg);border:1px solid var(--line);color:var(--sand);padding:.8rem;border-radius:8px;font:inherit}
+.fl input:focus,.fl select:focus{border-color:var(--moss)}
+.fl.err input{border-color:#e5604d}
+.fl em{color:#f08a79;font-style:normal;font-size:.85rem;min-height:1.1em}
+.pays{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.7rem;margin-bottom:1.4rem}
+.pays label{position:relative;border:2px solid var(--line);border-radius:12px;padding:.8rem;cursor:pointer;display:block}
+.pays input{position:absolute;opacity:0}
+.pays label:has(input:checked){border-color:var(--moss);background:rgba(167,187,114,.1)}
+.pays label:has(input:focus-visible){outline:3px solid var(--amber)}
+.pays b{display:block;color:var(--sand);font-family:var(--display)}
+.pays small{font-size:.82rem}
+.sum{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:1.2rem;align-self:start}
+.sum h4{font:700 1.15rem var(--display);color:var(--sand);margin-bottom:.6rem}
+.sum p{display:flex;justify-content:space-between;gap:1rem;padding:.3rem 0}
+.sum .tt{font:700 1.3rem var(--display);color:var(--sand)}
+.sum hr{border:0;border-top:1px solid var(--line);margin:.6rem 0}
+.qr{width:190px;height:190px;background:#fff;padding:10px;border-radius:10px;display:block}
+.code{word-break:break-all;background:var(--bg);border:1px dashed var(--line);padding:.8rem;border-radius:8px;font-size:.85rem;margin:1rem 0}
+.bar{height:54px;background:repeating-linear-gradient(90deg,#ece9d6 0 2px,transparent 2px 5px,#ece9d6 5px 6px,transparent 6px 10px);border-radius:4px;margin:1rem 0}
+.note{font-size:.88rem;opacity:.8;margin:.8rem 0}
+.row{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}.row .btn{flex:1}
+.okbox{text-align:center;padding:1rem 0 .5rem}
+.okbox svg{width:64px;fill:var(--moss);margin-bottom:.6rem}
+.okbox h3{font-size:1.8rem;margin-bottom:.5rem}
+.pend{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="progress" id="bar"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dobermann" viewBox="0 0 100 100">
+    <path id="meia" d="M50 98 L43 98 L36 88 L26 76 L18 58 L16 40 L19 26 L27 2 L40 24 L50 27 Z"/>
+    <use href="#meia" transform="translate(100 0) scale(-1 1)"/>
+    <path d="M26 44 L40 50 L38 55 L24 49 Z M74 44 L60 50 L62 55 L76 49 Z M50 72 L42 80 L46 85 L54 85 L58 80 Z" fill="#0c100b"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Thor Info, página inicial"><svg aria-hidden="true"><use href="#dobermann"/></svg>Thor <b>Info</b></a>
+    <div class="links"><a href="#pcs">PCs gamers</a><a href="#diferenciais">Diferenciais</a><a href="#contato">Contato</a></div>
+    <button class="btn cartbtn" id="cartBtn" type="button" aria-label="Abrir carrinho">Carrinho <b id="cnt">0</b></button>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <div>
+      <h1>Montado com precisão. Testado até o limite.</h1>
+      <p>A Thor Info monta PCs gamers sob medida, roda 72 horas de teste de estresse em cada máquina e entrega pronta para você só ligar e jogar.</p>
+      <div class="cta"><a class="btn" href="#pcs">Escolher meu PC</a><a class="btn ghost" href="#diferenciais">Como testamos</a></div>
+    </div>
+    <div class="stage">
+      <div class="pc" id="heroPc"><i class="fan f1"></i><i class="fan f2"></i><i class="fan f3"></i><i class="cool"></i><i class="ram"></i><i class="gpu"></i><i class="psu"></i></div>
+      <div class="ctrl">
+        <span>Cor da luz:</span>
+        <button class="dot" style="--c:95" data-h="95" aria-label="Verde"></button>
+        <button class="dot" style="--c:35" data-h="35" aria-label="Âmbar"></button>
+        <button class="dot" style="--c:190" data-h="190" aria-label="Ciano"></button>
+        <button class="dot" style="--c:290" data-h="290" aria-label="Roxo"></button>
+        <button class="oc" id="oc" aria-pressed="false">Overclock</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true"><div>
+  <span>Teste de 72 horas</span><span>Garantia de 12 meses</span><span>Montagem profissional</span><span>Cabeamento limpo</span><span>Frete para todo o Brasil</span>
+  <span>Teste de 72 horas</span><span>Garantia de 12 meses</span><span>Montagem profissional</span><span>Cabeamento limpo</span><span>Frete para todo o Brasil</span>
+</div></div>
+
+<section id="pcs">
+  <div class="wrap">
+    <h2 class="rv">Três PCs, três níveis de poder</h2>
+    <p class="sub rv" style="--d:.1s">Passe o mouse sobre cada máquina para vê-la de lado. Todas saem com sistema operacional instalado a pedido, drivers atualizados e o teste de estresse concluído.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="alt" id="diferenciais">
+  <div class="wrap">
+    <h2 class="rv">Cada PC passa pelo nosso crivo antes de sair</h2>
+    <div class="feat">
+      <div class="rv"><div class="ico">⚡</div><h3>Estresse de 72 horas</h3><p>Processador, placa de vídeo e memória trabalham no limite por três dias seguidos.</p></div>
+      <div class="rv" style="--d:.1s"><div class="ico">⚙</div><h3>Montagem limpa</h3><p>Cabos organizados, fluxo de ar planejado e temperaturas medidas e registradas.</p></div>
+      <div class="rv" style="--d:.2s"><div class="ico">✔</div><h3>Garantia de 12 meses</h3><p>Se algo falhar, a gente resolve direto com você, sem empurrar para o fabricante.</p></div>
+      <div class="rv" style="--d:.3s"><div class="ico">✈</div><h3>Entrega segura</h3><p>Embalagem reforçada, seguro contra danos e rastreio até a sua porta.</p></div>
+    </div>
+    <div class="nums">
+      <div class="rv"><b data-n="2400">0</b>PCs entregues</div>
+      <div class="rv" style="--d:.1s"><b data-n="72">0</b>horas de teste por PC</div>
+      <div class="rv" style="--d:.2s"><b data-n="98">0</b>% de clientes satisfeitos</div>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="wrap">
+    <svg class="logo rv" viewBox="0 0 100 100" aria-hidden="true"><use href="#dobermann"/></svg>
+    <h2 class="rv">Seu próximo PC começa com uma conversa</h2>
+    <p class="rv">Conte o que você joga e o orçamento que tem. Montamos uma configuração sob medida e respondemos em até 1 hora útil.</p>
+    <a class="btn rv" href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20quero%20um%20PC%20gamer%20da%20Thor%20Info" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>© 2026 Thor Info. Todos os direitos reservados.</span><span>Pagamento por PIX, cartão de crédito e débito, boleto e transferência. Loja demonstrativa: pagamentos simulados.</span></div>
+</footer>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho de compras">
+  <div class="mhead"><h3>Seu carrinho</h3><button class="x" data-close aria-label="Fechar carrinho">×</button></div>
+  <div id="items"></div>
+  <div class="dfoot" id="dfoot"></div>
+</aside>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle" hidden>
+  <div class="mbox"><div class="mhead"><h3 id="mtitle" tabindex="-1">Finalizar compra</h3><button class="x" data-close aria-label="Fechar">×</button></div>
+  <div class="steps" id="steps"></div><div id="ck"></div></div>
+</div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const hero=$('.hero'), pc=$('#heroPc');
+
+// Cor da luz do PC principal
+$$('.dot').forEach(d=>d.addEventListener('click',()=>{
+  const h=d.dataset.h; pc.style.setProperty('--h',h); hero.style.setProperty('--h',h);
+}));
+
+// Overclock
+$('#oc').addEventListener('click',e=>{
+  const on=e.currentTarget.getAttribute('aria-pressed')!=='true';
+  e.currentTarget.setAttribute('aria-pressed',on); pc.classList.toggle('fast',on);
+});
+
+// Inclinação do PC acompanha o mouse
+hero.addEventListener('mousemove',e=>{
+  const r=hero.getBoundingClientRect();
+  pc.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*50+'deg');
+  pc.style.setProperty('--rx',(-((e.clientY-r.top)/r.height-.5))*24+'deg');
+});
+
+
+/* ===== LOJA, CARRINHO E CHECKOUT (SIMULADO) ===== */
+const BRL=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const r2=v=>Math.round(v*100)/100;
+const esc=t=>String(t).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+const digits=v=>v.replace(/\D/g,'');
+const PCHTML='<i class="fan f1"></i><i class="fan f2"></i><i class="fan f3"></i><i class="cool"></i><i class="ram"></i><i class="gpu"></i><i class="psu"></i>';
+const P=[
+ {id:'start',nome:'Thor Mjölnir Start',h:95,preco:5490,desc:'Full HD em alto desempenho nos jogos competitivos.',specs:[['Processador','AMD Ryzen 5 5600, 6 núcleos, com cooler'],['Placa-mãe','B550M, soquete AM4'],['Memória','16 GB DDR4 3200 MHz (2x8 GB)'],['Placa de vídeo','GeForce RTX 4060 8 GB'],['Armazenamento','SSD NVMe 500 GB'],['Fonte','550 W 80 Plus Bronze'],['Gabinete','Mid tower, vidro lateral, 3 fans']]},
+ {id:'pro',nome:'Thor Valhalla Pro',h:35,tag:'Mais vendido',preco:9990,desc:'2K em ultra e transmissão sem engasgos.',specs:[['Processador','AMD Ryzen 7 7700, 8 núcleos, cooler a ar'],['Placa-mãe','B650M, soquete AM5'],['Memória','32 GB DDR5 6000 MHz (2x16 GB)'],['Placa de vídeo','GeForce RTX 4070 Super 12 GB'],['Armazenamento','SSD NVMe Gen4 1 TB'],['Fonte','750 W 80 Plus Gold'],['Gabinete','Mid tower, vidro temperado, 4 fans']]},
+ {id:'elite',nome:'Thor Asgard Elite',h:190,preco:17990,desc:'4K com ray tracing e criação de conteúdo.',specs:[['Processador','AMD Ryzen 9 7900X, 12 núcleos, water cooler 240 mm'],['Placa-mãe','B650 ATX com Wi-Fi'],['Memória','64 GB DDR5 6000 MHz (2x32 GB)'],['Placa de vídeo','GeForce RTX 4080 Super 16 GB'],['Armazenamento','SSD NVMe Gen4 2 TB'],['Fonte','850 W 80 Plus Gold'],['Gabinete','Mid tower airflow, vidro temperado, 6 fans']]}
+];
+const prod=id=>P.find(p=>p.id===id);
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem('thor-cart')||'[]').filter(i=>prod(i.id)&&i.qty>0&&i.qty<=5)}catch(e){cart=[]}
+const sub=()=>r2(cart.reduce((s,i)=>s+prod(i.id).preco*i.qty,0));
+
+$('#grid').innerHTML=P.map((p,i)=>`<article class="card rv" style="--h:${p.h};--d:${i*.15}s">${p.tag?`<span class="tag">${p.tag}</span>`:''}<div class="pc" style="--h:${p.h}">${PCHTML}</div><h3>${p.nome}</h3><p>${p.desc}</p><ul>${[0,3,2,4].map(k=>`<li>${p.specs[k][1]}</li>`).join('')}</ul><details><summary>Ficha técnica completa</summary><dl>${p.specs.map(x=>`<dt>${x[0]}</dt><dd>${x[1]}</dd>`).join('')}</dl></details><div class="price">${BRL(p.preco)}<small>ou 10x de ${BRL(p.preco/10)} sem juros<br>${BRL(r2(p.preco*.95))} no PIX</small></div><button class="btn" type="button" data-add="${p.id}">Adicionar ao carrinho</button></article>`).join('');
+
+/* Carrinho */
+function upd(){
+  try{localStorage.setItem('thor-cart',JSON.stringify(cart))}catch(e){}
+  $('#cnt').textContent=cart.reduce((s,i)=>s+i.qty,0);
+  $('#items').innerHTML=cart.length?cart.map(i=>{const p=prod(i.id);return `<div class="it" style="--h:${p.h}"><span class="sw"></span><div><b>${p.nome}</b><small>${BRL(p.preco)} cada</small><span class="qty"><button type="button" data-q="${i.id}|-1" aria-label="Diminuir">−</button><span>${i.qty}</span><button type="button" data-q="${i.id}|1" aria-label="Aumentar">+</button><button class="lnk" type="button" data-q="${i.id}|-9">Remover</button></span></div><b>${BRL(p.preco*i.qty)}</b></div>`}).join(''):'<p class="note">Seu carrinho está vazio. Escolha um PC para começar.</p>';
+  $('#dfoot').innerHTML=`<p><span>Subtotal</span><span>${BRL(sub())}</span></p><button class="btn" type="button" data-checkout ${cart.length?'':'disabled'}>Finalizar compra</button>`;
+}
+const openDrawer=()=>{$('#ov').classList.add('on');$('#drawer').classList.add('on');$('#drawer .x').focus()};
+const closeAll=()=>{$('#ov').classList.remove('on');$('#drawer').classList.remove('on');$('#modal').hidden=true;document.body.style.overflow=''};
+
+/* Validações */
+function cpfOk(c){c=digits(c);if(c.length!==11||/^(\d)\1+$/.test(c))return false;for(let t=9;t<11;t++){let s=0;for(let i=0;i<t;i++)s+=c[i]*(t+1-i);if((s*10%11)%10!=c[t])return false}return true}
+function luhn(n){if(n.length<13)return false;let s=0,d=false;for(let i=n.length-1;i>=0;i--){let x=+n[i];if(d){x*=2;if(x>9)x-=9}s+=x;d=!d}return s%10===0}
+const MK={cpf:v=>digits(v).slice(0,11).replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'),
+ cep:v=>{v=digits(v).slice(0,8);return v.length>5?v.slice(0,5)+'-'+v.slice(5):v},
+ card:v=>digits(v).slice(0,16).replace(/(\d{4})(?=\d)/g,'$1 '),
+ exp:v=>{v=digits(v).slice(0,4);return v.length>2?v.slice(0,2)+'/'+v.slice(2):v},
+ cvv:v=>digits(v).slice(0,4)};
+document.addEventListener('input',e=>{const m=e.target.dataset&&e.target.dataset.mask;if(m&&MK[m])e.target.value=MK[m](e.target.value)});
+const bad=(id,msg)=>{const l=$('#'+id).parentNode;l.classList.add('err');l.querySelector('em').textContent=msg;return 1};
+const val=id=>$('#'+id).value.trim();
+const clr=()=>$$('.fl.err').forEach(l=>{l.classList.remove('err');l.querySelector('em').textContent=''});
+
+/* Checkout */
+let S={};
+const METODOS=[['pix','PIX','5% de desconto'],['credito','Cartão de crédito','até 10x sem juros'],['debito','Cartão de débito','à vista'],['boleto','Boleto','vence em 3 dias'],['transf','Transferência','TED, à vista']];
+function tot(){const s=sub(),fr=S.cep8?(/^[89]/.test(S.cep8)?89:169):0,d=S.pay==='pix'?r2(s*.05):0;return{s,fr,d,t:r2(s-d+fr)}}
+const seedOf=t=>[...t].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+function rnd(seed){let s=seed;return()=>(s=(s*1664525+1013904223)>>>0)/4294967296}
+function qr(seed){const n=25,r=rnd(seed);let o='';for(let y=0;y<n;y++)for(let x=0;x<n;x++){let on,c=[[0,0],[n-7,0],[0,n-7]].find(([a,b])=>x>=a&&x<a+7&&y>=b&&y<b+7);if(c){const lx=x-c[0],ly=y-c[1];on=lx==0||lx==6||ly==0||ly==6||(lx>1&&lx<5&&ly>1&&ly<5)}else on=r()>.5;if(on)o+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}return `<svg class="qr" viewBox="0 0 ${n} ${n}" role="img" aria-label="QR Code de demonstração">${o}</svg>`}
+function linha(seed){const r=rnd(seed);let d='';while(d.length<47)d+=Math.floor(r()*10);return `${d.slice(0,5)}.${d.slice(5,10)} ${d.slice(10,15)}.${d.slice(15,21)} ${d.slice(21,26)}.${d.slice(26,32)} ${d[32]} ${d.slice(33)}`}
+const fld=(id,l,ph,m,w)=>`<label class="fl ${w||''}">${l}<input id="${id}" placeholder="${ph}" data-mask="${m||''}" value="${esc(S[id]||'')}" autocomplete="off"><em></em></label>`;
+function resumo(){const T=tot();return `<aside class="sum"><h4>Resumo do pedido</h4>${cart.map(i=>`<p><span>${i.qty}× ${prod(i.id).nome}</span><b>${BRL(prod(i.id).preco*i.qty)}</b></p>`).join('')}<hr><p><span>Subtotal</span><b>${BRL(T.s)}</b></p>${T.d?`<p><span>Desconto PIX (5%)</span><b>− ${BRL(T.d)}</b></p>`:''}<p><span>Frete</span><b>${S.cep8?BRL(T.fr):'a calcular'}</b></p><hr><p class="tt"><span>Total</span><span>${BRL(T.t)}</span></p></aside>`}
+function openCheckout(){if(!cart.length)return;$('#ov').classList.remove('on');$('#drawer').classList.remove('on');S={step:1,pay:'pix',parc:1};$('#modal').hidden=false;document.body.style.overflow='hidden';renderCk();$('#mtitle').focus()}
+function renderCk(){
+  const st=S.step;$('#steps').innerHTML=['Seus dados','Pagamento','Confirmação'].map((t,i)=>`<span ${i+1===st?'aria-current="step"':''}>${i+1}. ${t}</span>`).join('');
+  const box=$('#ck');
+  if(st===1){
+    box.innerHTML=`<div class="mbody"><form id="f1" class="frm" novalidate>${fld('nome','Nome completo','Maria da Silva','','w')}${fld('cpf','CPF','000.000.000-00','cpf')}${fld('email','E-mail','voce@email.com')}${fld('cep','CEP','80000-000','cep')}${fld('num','Número','123')}${fld('end','Endereço (rua, bairro, cidade)','Rua das Araucárias, Centro, Curitiba','','w')}<p class="note" style="grid-column:1/-1">CPF de teste: 529.982.247-25. Frete simulado: R$ 89 para CEPs iniciados em 8 ou 9 (Sul) e R$ 169 para o resto do país.</p><button class="btn" style="grid-column:1/-1">Continuar para o pagamento</button></form>${resumo()}</div>`;
+    $('#f1').onsubmit=e=>{e.preventDefault();clr();let x=0;
+      if(val('nome').split(/\s+/).length<2)x+=bad('nome','Informe nome e sobrenome');
+      if(!cpfOk(val('cpf')))x+=bad('cpf','CPF inválido');
+      if(!/^\S+@\S+\.\S+$/.test(val('email')))x+=bad('email','E-mail inválido');
+      if(digits(val('cep')).length!==8)x+=bad('cep','O CEP tem 8 dígitos');
+      if(!val('num'))x+=bad('num','Informe o número');
+      if(val('end').length<5)x+=bad('end','Informe o endereço');
+      if(x)return;['nome','cpf','email','cep','num','end'].forEach(k=>S[k]=val(k));
+      S.cep8=digits(S.cep);S.no='TI-'+(100000+Math.floor(Math.random()*900000));S.step=2;renderCk()}
+  }
+  if(st===2){
+    const T=tot(),m=S.pay,cartao=m==='credito'||m==='debito';
+    let pan='',btn='Confirmar pedido';
+    if(m==='pix'){btn='Já paguei (simular)';pan=`<div class="row" style="align-items:center">${qr(seedOf(S.no))}<div><b>Pague com o app do seu banco</b><p class="note">QR Code e código de demonstração, não funcionam em bancos reais.</p></div></div><div class="code" id="pixc">00020126PIXDEMO-${S.no}-${T.t.toFixed(2)}-THORINFO</div><button type="button" class="btn ghost" data-copy>Copiar código</button>`}
+    if(cartao){btn=m==='credito'?`Pagar ${S.parc}x de ${BRL(r2(T.t/S.parc))}`:`Pagar ${BRL(T.t)}`;pan=`<div class="frm">${fld('cn','Número do cartão','4242 4242 4242 4242','card','w')}${fld('cnome','Nome impresso no cartão','MARIA DA SILVA','','w')}${fld('cex','Validade','MM/AA','exp')}${fld('ccv','CVV','123','cvv')}${m==='credito'?`<label class="fl w">Parcelas<select id="parc">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<option value="${n}" ${n==S.parc?'selected':''}>${n}x de ${BRL(r2(T.t/n))} sem juros</option>`).join('')}</select><em></em></label>`:''}</div><p class="note">Cartão de teste: 4242 4242 4242 4242, qualquer validade futura e CVV.</p>`}
+    if(m==='boleto'){btn='Gerar boleto';pan=`<p>Ao confirmar, geramos o boleto com vencimento em <b>${new Date(Date.now()+3*864e5).toLocaleDateString('pt-BR')}</b>. O pedido segue para montagem após a compensação, em até 2 dias úteis.</p>`}
+    if(m==='transf'){pan=`<p>Faça uma TED para a conta abaixo e envie o comprovante pelo WhatsApp.</p><div class="code">Banco 000, Banco Demonstração<br>Agência 0001 · Conta corrente 12345-6<br>Favorecido: Thor Info (dados fictícios)<br>Valor: ${BRL(T.t)} · Identificador: ${S.no}</div>`}
+    box.innerHTML=`<div class="mbody"><div><div class="pays" role="radiogroup" aria-label="Forma de pagamento">${METODOS.map(([k,n,d])=>`<label><input type="radio" name="pay" value="${k}" ${k===m?'checked':''}><b>${n}</b><small>${d}</small></label>`).join('')}</div>${pan}<div class="row"><button type="button" class="btn ghost" data-back>Voltar</button><button type="button" class="btn" id="pagar">${btn}</button></div></div>${resumo()}</div>`;
+    $$('input[name=pay]').forEach(r=>r.onchange=()=>{S.pay=r.value;renderCk()});
+    if($('#parc'))$('#parc').onchange=e=>{S.parc=+e.target.value;renderCk()};
+    $('#pagar').onclick=e=>{
+      if(cartao){clr();let x=0;
+        if(!luhn(digits(val('cn'))))x+=bad('cn','Número de cartão inválido');
+        if(val('cnome').length<3)x+=bad('cnome','Informe o nome do cartão');
+        const v=val('cex').match(/^(\d\d)\/(\d\d)$/);
+        if(!v||+v[1]<1||+v[1]>12||new Date(2000+ +v[2],+v[1],1)<=new Date())x+=bad('cex','Validade inválida');
+        if(digits(val('ccv')).length<3)x+=bad('ccv','CVV inválido');
+        if(x)return}
+      e.target.disabled=true;e.target.textContent='Processando…';
+      setTimeout(()=>{S.final=tot();S.items=cart.map(i=>({...i}));S.step=3;cart=[];upd();renderCk()},1600)};
+  }
+  if(st===3){
+    const m=S.pay,T=S.final,pend=m==='boleto'||m==='transf';
+    const ttl={pix:'Pagamento PIX confirmado',credito:`Pagamento aprovado em ${S.parc}x`,debito:'Pagamento aprovado no débito',boleto:'Boleto gerado, aguardando pagamento',transf:'Pedido registrado, aguardando transferência'}[m];
+    const extra=m==='boleto'?`<div class="code">${linha(seedOf(S.no))}</div><div class="bar" aria-hidden="true"></div><p class="note">Vencimento em ${new Date(Date.now()+3*864e5).toLocaleDateString('pt-BR')}. Linha digitável de demonstração.</p>`:m==='transf'?`<p class="note">Envie o comprovante com o identificador ${S.no} para liberar a montagem.</p>`:'';
+    box.innerHTML=`<div class="mbody"><div class="okbox"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#dobermann"/></svg><h3 class="${pend?'pend':''}">${ttl}</h3><p>Pedido <b>${S.no}</b> em nome de ${esc(S.nome)}. Enviaremos os detalhes para ${esc(S.email)}.</p>${extra}<p class="note">Montagem e 72 h de teste: envio em até 5 dias úteis após a confirmação do pagamento. Entrega em ${esc(S.end)}, ${esc(S.num)}, CEP ${esc(S.cep)}.</p><button class="btn" type="button" data-close>Voltar à loja</button></div><aside class="sum"><h4>Pedido ${S.no}</h4>${S.items.map(i=>`<p><span>${i.qty}× ${prod(i.id).nome}</span><b>${BRL(prod(i.id).preco*i.qty)}</b></p>`).join('')}<hr>${T.d?`<p><span>Desconto PIX</span><b>− ${BRL(T.d)}</b></p>`:''}<p><span>Frete</span><b>${BRL(T.fr)}</b></p><hr><p class="tt"><span>Total</span><span>${BRL(T.t)}</span></p><p class="note">Simulação: nenhum pagamento real foi feito.</p></aside></div>`;
+  }
+}
+
+/* Eventos globais da loja */
+document.addEventListener('click',e=>{
+  const t=e.target,a=t.closest('[data-add]'),q=t.closest('[data-q]');
+  if(a){const it=cart.find(i=>i.id===a.dataset.add);it?it.qty=Math.min(it.qty+1,5):cart.push({id:a.dataset.add,qty:1});upd();openDrawer()}
+  else if(q){const [id,d]=q.dataset.q.split('|'),it=cart.find(i=>i.id===id);it.qty=Math.min(it.qty+ +d,5);if(it.qty<1)cart=cart.filter(i=>i!==it);upd()}
+  else if(t.closest('#cartBtn'))openDrawer();
+  else if(t.closest('[data-checkout]'))openCheckout();
+  else if(t.closest('[data-close]')||t.id==='ov')closeAll();
+  else if(t.closest('[data-back]')){S.step=1;renderCk()}
+  else if(t.closest('[data-copy]')){const c=$('#pixc').textContent;(navigator.clipboard?navigator.clipboard.writeText(c):Promise.reject()).catch(()=>{}).finally(()=>{t.textContent='Código copiado'})}
+});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+upd();
+
+// Hover nos cards acelera as ventoinhas
+$$('.card').forEach(c=>{
+  const p=c.querySelector('.pc');
+  c.addEventListener('mouseenter',()=>p.classList.add('fast'));
+  c.addEventListener('mouseleave',()=>p.classList.remove('fast'));
+});
+
+// Aparecer na rolagem + contadores
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+  const n=e.target.querySelector('[data-n]');
+  if(n){const t=+n.dataset.n,t0=performance.now();
+    (function f(now){const k=Math.min((now-t0)/1400,1);n.textContent=Math.round(t*(1-Math.pow(1-k,3)));k<1&&requestAnimationFrame(f)})(t0)}
+}),{threshold:.2});
+$$('.rv').forEach(el=>io.observe(el));
+
+// Barra de progresso
+addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  $('#bar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+},{passive:true});
+</script>
+</body>
+</html>
